@@ -1,7 +1,5 @@
-# ticket-app
+# booking-app
 Go-hands-on-project
-
-Introduction to Go programming
 
 <image src="https://store.ardanlabs.com/cdn/shop/products/gopher-patch01-02_c7b3aa27-3c46-4c4f-823f-580bfea20dde.jpg?v=1661445057" width=1000 center>
 
