@@ -32,6 +32,11 @@ For running this project locally, you need to have the following tools installed
 ---
 ## 4. Troubleshooting
 
+If you encounter difficulties in code execution, try to run this command in the root of the directory:
+```sh
+$ go mod init booking-app
+```
+
 <br/>
 
 <br />
