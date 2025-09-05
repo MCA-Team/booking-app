@@ -5,8 +5,11 @@ import (
 	"strings"
 )
 
-var conferenceName string = "Go conference"
+// Package level constant
 const conferenceTickets uint = 50 
+
+// Package level variables
+var conferenceName string = "Go conference"
 var remainingTickets uint = 50
 var firstName string
 var lastName string
@@ -22,7 +25,7 @@ func main() {
 
 	for {
 		// Ask user for their informations
-		firstName, lastName, email, userTickets = getUserInput( )
+		firstName, lastName, email, userTickets = getUserInput()
 
 		// Validate user input
 		isValidName, isValidEmail, isValidTicketNumber := validateUserInput(firstName, lastName, email, userTickets)
@@ -42,7 +45,6 @@ func main() {
 			}
 
 		} else {
-			// fmt.Printf("We only have %v tickets remaining, so you can't book %v tickets\n", remainingTickets, userTickets)
 			if !isValidName {
 				fmt.Println("First name or last name you entered is too short")
 			}
@@ -57,12 +59,14 @@ func main() {
 
 }
 
+// greetUsers welcomes the user in the app interface.
 func greetUsers() {
 	fmt.Printf("Welcome to %v booking application !\n", conferenceName)
 	fmt.Printf("We have a total of %v tickets and %v are still available.\n", conferenceTickets, remainingTickets)
 	fmt.Println("Get your ticket here to attend.")
 }
 
+// getFirstNames gathers first names of all conference bookers.
 func getFirstNames() []string {
 	var firstNames []string
 	for _, booking := range bookings {
