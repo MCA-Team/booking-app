@@ -36,10 +36,12 @@ $ go run .
 ---
 ## 4. Troubleshooting
 
-If you encounter difficulties in code execution, try to run this command in the root of the directory in order to initialize the folder as a Go module :
+- If you encounter difficulties in code execution, try to run this command in the root of the directory in order to initialize the folder as a Go module :
 ```sh
 $ go mod init booking-app
 ```
+- To install Go compiler, follow the instructions on the link below : <br/>
+[https://go.dev/doc/install](https://go.dev/doc/install)
 
 <br/>
 
