@@ -8,7 +8,7 @@ Go-hands-on-project
 
 
 ## 1. Overwiew
-This project is a hand-on project to introduce someone to Golang main concepts. The project draws a booking app. 
+This project is a hand-on project to introduce someone to Golang main concepts. The project draws a booking app. A simple booking app which allows someone to book tickets for a conference by giving their informations.
 
 <br/>
 
@@ -24,7 +24,11 @@ For running this project locally, you need to have the following tools installed
 
 ---
 ---
-## 3. Setting up the environment
+## 3. Execution
+To execute this project, just run the following command in your terminal, being in the root of the directory :
+```sh
+$ go run .
+```
 
 <br/>
 
@@ -32,7 +36,7 @@ For running this project locally, you need to have the following tools installed
 ---
 ## 4. Troubleshooting
 
-If you encounter difficulties in code execution, try to run this command in the root of the directory:
+If you encounter difficulties in code execution, try to run this command in the root of the directory in order to initialize the folder as a Go module :
 ```sh
 $ go mod init booking-app
 ```
