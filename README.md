@@ -8,7 +8,7 @@ Go-hands-on-project
 
 
 ## 1. Overwiew
-This project is a hand-on project to introduce someone to Golang main concepts. The project draws a booking app. A simple booking app which allows someone to book tickets for a conference by giving their informations.
+This simple project is a hand-on project to introduce someone to Golang main concepts. The project draws a booking app. A simple booking app which allows someone to book tickets for a conference by giving their informations.
 
 <br/>
 
@@ -29,6 +29,7 @@ To execute this project, just run the following command in your terminal, being 
 ```sh
 $ go run .
 ```
+The CLI will ask you to enter your informations (first name, last name, e-mail, number of tickets you want) and will print a ticket for your registration.
 
 <br/>
 
