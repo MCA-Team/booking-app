@@ -3,9 +3,11 @@ package main
 import (
 	"booking-app/helper"
 	"fmt"
+	"sync"
+	"time"
 )
 
-// Package level constant
+// Package level constants
 const conferenceTickets uint = 50 
 
 // Package level variables
@@ -24,9 +26,9 @@ type UserData struct {
 	numberOfTickets uint
 }
 
-func main() {
-	
+var wg = sync.WaitGroup{}
 
+func main() {
 	// Welcome message
 	greetUsers()
 
@@ -39,7 +41,11 @@ func main() {
 
 		if isValidName && isValidEmail && isValidTicketNumber {
 			// Book the ticket
-			bookings, remainingTickets = bookTicket(userTickets, firstName, lastName, email)
+			bookTicket(userTickets, firstName, lastName, email)
+
+			// Goroutines with sending tickets by mail simulation function
+			wg.Add(1)
+			go sendTickets(userTickets, firstName, lastName, email)
 
 			// Print the first names of bookings
 			firstNames := getFirstNames()
@@ -63,6 +69,7 @@ func main() {
 			}
 		}
 	}
+	wg.Wait()
 
 }
 
@@ -79,9 +86,11 @@ func getFirstNames() []string {
 	for _, booking := range bookings {
 		firstNames = append(firstNames, booking.firstName)
 	}
+
 	return firstNames
 }
 
+// getUserInput retrieves the informations entered by the user.
 func getUserInput() (string, string, string, uint) {
 	var firstName string
 	var lastName string
@@ -100,22 +109,28 @@ func getUserInput() (string, string, string, uint) {
 	return firstName, lastName, email, userTickets
 }
 
-func bookTicket(userTickets uint, firstName string, lastName string, email string) ([]UserData, uint) {
+// bookTicket saves the booking informations and updates the number of remaining tickets.
+func bookTicket(userTickets uint, firstName string, lastName string, email string) {
 	remainingTickets = remainingTickets - userTickets
-
-	
 	userData := UserData {
 		firstName: firstName,
 		lastName: lastName,
 		email: email,
 		numberOfTickets: userTickets,
 	}
-
+	
 	bookings = append(bookings, userData)
-	fmt.Printf("List of bookings is : %v\n", bookings)
 
+	// fmt.Printf("List of bookings is : %v\n", bookings)
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v\n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+}
 
-	return bookings, remainingTickets
+func sendTickets(userTickets uint, firstName string, lastName string, email string) {
+	time.Sleep(10*time.Second)
+	var ticket = fmt.Sprintf("%v tickets for %v, %v", userTickets, firstName, lastName)
+	fmt.Println("##################")
+	fmt.Printf("Sending ticket: \n %v to email address %v\n", ticket, email)
+	fmt.Println("##################")
+	wg.Done()
 }
